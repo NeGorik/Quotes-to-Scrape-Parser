@@ -1,11 +1,10 @@
 # pip install requests parsel lxml
 # pip install
-import json
 
+import json
 import requests
 from parsel import Selector
 from requests import Response
-import lxml
 
 
 
@@ -23,7 +22,6 @@ def parse(response: Response) -> list[dict]:
         tags: list[dict] = [{
             "name": tag.css("::text").get().strip(),
             "link": response.url + tag.css("::attr(href)").get()[1:]
-
         }
             for tag in quote.css(".tags .tag")
         ]
